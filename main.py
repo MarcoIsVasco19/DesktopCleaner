@@ -32,9 +32,13 @@ def directoryCheck(pdir):
         return True
     else:
         os.system('mkdir -v ' + str(pdir))
+        return True
 
-def moveFile(src, dst):
-    shutil.move(str(src), str(dst))
+
+def moveFile(folder, src, dst):
+    filetomove = (str(folder) + str(src))
+    movingfileto = (str(dst) + str(file))
+    shutil.move(filetomove, movingfileto)
 
 
 def searchInList(filetocheck, array):
@@ -58,8 +62,7 @@ for folderName, subfolders, filenames in os.walk(search_dir):
     #     print(filename)
     for file in filenames:
         if searchInList(file, pictures):
-            print("filetomove: " + str(file))
-            print("movingfileto: " + str(pictures_dir))
-            # moveFile(search_dir, pictures_dir)
+            directoryCheck(pictures_dir)
+            moveFile(search_dir, file, pictures_dir)
 
     print('')
