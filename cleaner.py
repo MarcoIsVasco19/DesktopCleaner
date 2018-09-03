@@ -49,7 +49,7 @@ def directoryCheck(pdir):
     if os.path.isdir(str(pdir)):
         return True
     else:
-        os.system('mkdir -v ' + str(pdir))
+        os.mkdir(str(pdir))
         return True
 
 
@@ -94,5 +94,3 @@ for folderName, subfolders, filenames in os.walk(search_dir):
         except shutil.Error as err:
             print("Nothing to do.")
             break
-
-    print('')
