@@ -64,20 +64,19 @@ for folderName, subfolders, filenames in os.walk(search_dir):
             if searchInList(file, pictures):
                 directoryCheck(pictures_dir)
                 moveFile(file, pictures_dir)
-            elif searchInList(file, documents_dir):
+            elif searchInList(file, documents):
                 directoryCheck(documents_dir)
                 moveFile(file, documents_dir)
-            elif searchInList(file, scripts_dir):
+            elif searchInList(file, scripts):
                 directoryCheck(scripts_dir)
                 moveFile(file, scripts_dir)
-            elif searchInList(file, media_dir):
+            elif searchInList(file, media):
                 directoryCheck(media_dir)
                 moveFile(file, media_dir)
+            else:
+                directoryCheck(misc_dir)
+                moveFile(file, misc_dir)
         except shutil.Error as err:
             print("Nothing to do.")
             break
-        else:
-            directoryCheck(misc_dir)
-            moveFile(file, misc_dir)
-
     print('')
