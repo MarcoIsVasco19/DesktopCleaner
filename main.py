@@ -59,22 +59,21 @@ def searchInList(filetocheck, array):
 for folderName, subfolders, filenames in os.walk(search_dir):
     print('The current folder is ' + folderName, '\n')
     for file in filenames:
-        # Pictures
         try:
-            if searchInList(file, pictures):
+            if searchInList(file, pictures):        # Pictures
                 directoryCheck(pictures_dir)
                 moveFile(file, pictures_dir)
-            elif searchInList(file, documents):
+            elif searchInList(file, documents):     # Docs
                 directoryCheck(documents_dir)
                 moveFile(file, documents_dir)
-            elif searchInList(file, scripts):
+            elif searchInList(file, scripts):       # Scripts
                 directoryCheck(scripts_dir)
                 moveFile(file, scripts_dir)
-            elif searchInList(file, media):
+            elif searchInList(file, media):         # Media
                 directoryCheck(media_dir)
                 moveFile(file, media_dir)
             else:
-                directoryCheck(misc_dir)
+                directoryCheck(misc_dir)            # Other/Misc
                 moveFile(file, misc_dir)
         except shutil.Error as err:
             print("Nothing to do.")
