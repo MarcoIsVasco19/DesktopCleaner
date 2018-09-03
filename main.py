@@ -60,22 +60,24 @@ for folderName, subfolders, filenames in os.walk(search_dir):
     print('The current folder is ' + folderName, '\n')
     for file in filenames:
         # Pictures
-        if searchInList(file, pictures):
-            directoryCheck(pictures_dir)
-            moveFile(file, pictures_dir)
-
-        # elif searchInList(file, documents_dir):
-        #     directoryCheck(documents_dir)
-        #     moveFile(file, documents_dir)
-        #
-        # elif searchInList(file, scripts_dir):
-        #     directoryCheck(scripts_dir)
-        #     moveFile(file, scripts_dir)
-        # elif searchInList(file, media_dir):
-        #     directoryCheck(media_dir)
-        #     moveFile(file, media_dir)
-        # else:
-        #     directoryCheck(misc_dir)
-        #     moveFile(file, misc_dir)
+        try:
+            if searchInList(file, pictures):
+                directoryCheck(pictures_dir)
+                moveFile(file, pictures_dir)
+            elif searchInList(file, documents_dir):
+                directoryCheck(documents_dir)
+                moveFile(file, documents_dir)
+            elif searchInList(file, scripts_dir):
+                directoryCheck(scripts_dir)
+                moveFile(file, scripts_dir)
+            elif searchInList(file, media_dir):
+                directoryCheck(media_dir)
+                moveFile(file, media_dir)
+        except shutil.Error as err:
+            print("Nothing to do.")
+            break
+        else:
+            directoryCheck(misc_dir)
+            moveFile(file, misc_dir)
 
     print('')
