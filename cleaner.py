@@ -29,13 +29,13 @@ if _platform == "linux" or _platform == "linux2" or _platform == "darwin":
         desktop = "Your " + _platform + " does not have a Desktop Directory"
 # Windows 32-bit or 64-bit
 elif _platform == "win32" or _platform == "win64":
-    if os.path.isdir(home+"\Desktop"):
+    if os.path.isdir(home+"\Desktop\\"):
         search_dir = home+"\Desktop\\"
-        pictures_dir = search_dir+"\pictures\\"
-        documents_dir = search_dir+"\documents\\"
-        scripts_dir = search_dir+"\scripts\\"
-        media_dir = search_dir + "\media\\"
-        misc_dir = search_dir+"\misc\\"
+        pictures_dir = search_dir+"pictures\\"
+        documents_dir = search_dir+"documents\\"
+        scripts_dir = search_dir+"scripts\\"
+        media_dir = search_dir + "media\\"
+        misc_dir = search_dir+"misc\\"
     else:
         desktop = "Your " + _platform + " does not have a Desktop Directory"
 
@@ -79,13 +79,13 @@ for folderName, subfolders, filenames in os.walk(search_dir):
             if searchInList(file, pictures):
                 directoryCheck(pictures_dir)
                 moveFile(file, pictures_dir)
-            elif searchInList(file, documents_dir):
+            elif searchInList(file, documents):
                 directoryCheck(documents_dir)
                 moveFile(file, documents_dir)
-            elif searchInList(file, scripts_dir):
+            elif searchInList(file, scripts):
                 directoryCheck(scripts_dir)
                 moveFile(file, scripts_dir)
-            elif searchInList(file, media_dir):
+            elif searchInList(file, media):
                 directoryCheck(media_dir)
                 moveFile(file, media_dir)
             else:
